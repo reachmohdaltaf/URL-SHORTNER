@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    *{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+    }
+    body{
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      background: #F4F3F0;
+      gap: 10px;
+    }
+    h1{
+        color: #fff;
+        padding-left: 10px;
+
+    }
+    .form{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+    .table{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 80%;
+    }
+    table{
+        align-items: center;
+        direction: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    form{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 1px;
+        padding: 10px;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 100px;
+
+     }
+  
+    form input{
+        padding: 10px;
+        width: 100%;
+    }
+    form label{
+        width: 15%;
+    }
+    form button{
+        padding: 10px;
+        background-color: #0A3D33;
+        color: white;
+        border: outset 5px #0a2721;
+        cursor: pointer;
+        transform: scale(1);
+    }
+    form button:active{
+    transform: scale(0.982);    
+    }
+
+    .copy{
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        width: 80%;
+        
+
+    }
+    .copy h4 {
+        width: 100%;
+    }
+    .copy h4 button{
+
+    padding: 10px;        
+    }
+    .copy input{
+        width: 60%;
+        padding: 10px;
+        background-color: none;
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+
+    .navbar{
+      background: white;
+      width: 100%;
+      box-shadow: 0px 0px 5px;
+      background: #0A3D33;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+    }
+
+
+  </style>
+  <body>
+
+    <nav class="navbar">
+      <h1>Url Shortner</h1>
+    </nav>
+
+
+    
+    <% if(locals.id){ %>
+    <div class="copy"><h4><strong>Url generated:</strong><input style="font-weight: 200;" value=" http://localhost:3000/<%= id %> "><button>Copy</button></input></h4></div>
+    <% } %>
+    <div class="form" >
+      <form  action="/url" method="post">
+        <label for="">Enter Your Original URL</label>
+        <input type="text" name="url" placeholder="Enter your URL" />
+        <button type="submit">Generate</button>
+      </form>
+    </div>  
+    <div class="table">
+      <% if(locals.urls){ %>
+        <table border="1" cellspacing="0" cellpadding="10">
+          <thead>
+            <tr>
+              <th>S.no</th>
+              <th>Short ID</th>
+              <th>Redirect</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% urls.forEach((url, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= url.shortId %></td>
+                <td><a href="<%= url.redirectURL %>" target="_blank"><%= url.redirectURL %></a></td>
+                <td><%= url.visitHistory.length %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } %>
+    </div>
+  </body>
+</html>
