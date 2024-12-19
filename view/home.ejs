@@ -3,133 +3,210 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <style>
-    *{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    <title>URL Shortener</title>
+    <style>
+      * {
+        font-family: 'Poppins', sans-serif;
         margin: 0;
-    }
-    body{
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      background: #F4F3F0;
-      gap: 10px;
-    }
-    h1{
-        color: #fff;
-        padding-left: 10px;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    }
-    .form{
-        width: 80%;
+      body {
+        background: linear-gradient(135deg, #f8fafc, #e7ebf0);
+        color: #333;
+        min-height: 100vh;
         display: flex;
-        justify-content: center;
-    }
-    .table{
+        flex-direction: column;
         align-items: center;
-        display: flex;
-        justify-content: center;
-        width: 80%;
-    }
-    table{
-        align-items: center;
-        direction: flex;
-        justify-content: center;
-        width: 100%;
-    }
-    form{
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0px 0px 1px;
-        padding: 10px;
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 100px;
+        padding: 30px;
+        gap: 20px;
+      }
 
-     }
-  
-    form input{
-        padding: 10px;
-        width: 100%;
-    }
-    form label{
-        width: 15%;
-    }
-    form button{
-        padding: 10px;
-        background-color: #0A3D33;
+      .navbar {
+        background: linear-gradient(90deg, #3f51b5, #1f57b1);
         color: white;
-        border: outset 5px #0a2721;
-        cursor: pointer;
-        transform: scale(1);
-    }
-    form button:active{
-    transform: scale(0.982);    
-    }
+        width: 100%;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
 
-    .copy{
-        font-size: 25px;
+      .navbar h1 {
+        font-size: 28px;
+        font-weight: 600;
+      }
+
+      .form {
+        width: 90%;
+        max-width: 600px;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      form label {
+        font-size: 16px;
+        font-weight: 500;
+        color: #555;
+      }
+
+      form input {
+        padding: 12px 15px;
+        font-size: 14px;
+        border: 1px solid #dcdcdc;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      form input:focus {
+        border-color: #1f57b1;
+        outline: none;
+        box-shadow: 0px 0px 8px rgba(31, 87, 177, 0.3);
+      }
+
+      form button {
+        padding: 12px 20px;
+        background: linear-gradient(90deg, #3f51b5, #1f57b1);
+        color: white;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      form button:hover {
+        background: linear-gradient(90deg, #3f4fa1, #1b4a99);
+      }
+
+      form button:active {
+        transform: scale(0.97);
+      }
+
+      .copy {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 15px 20px;
+        border-radius: 15px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 600px;
+        gap: 10px;
+      }
+
+      .copy h4 {
+        flex: 1;
+        font-size: 16px;
+        font-weight: 500;
+        color: #555;
         display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 10px;
-        width: 80%;
-        
+        gap: 10px;
+      }
 
-    }
-    .copy h4 {
-        width: 100%;
-    }
-    .copy h4 button{
-
-    padding: 10px;        
-    }
-    .copy input{
-        width: 60%;
-        padding: 10px;
-        background-color: none;
-        background: none;
+      .copy input {
         border: none;
-        font-size: 20px;
-    }
+        background: #f8f9fb;
+        font-size: 14px;
+        padding: 8px;
+        border-radius: 8px;
+        flex: 1;
+        color: #333;
+        outline: none;
+      }
 
-    .navbar{
-      background: white;
-      width: 100%;
-      box-shadow: 0px 0px 5px;
-      background: #0A3D33;
-      display: flex;
-      align-items: center;
-      padding: 12px;
-    }
+      .copy button {
+        background: #1f57b1;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
 
+      .copy button:hover {
+        background: #18489c;
+      }
 
-  </style>
+      .table {
+        width: 90%;
+        max-width: 800px;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+
+      table thead {
+        background: #1f57b1;
+        color: white;
+      }
+
+      table th,
+      table td {
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        font-size: 14px;
+      }
+
+      table tbody tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+
+      table tbody tr:hover {
+        background: #f3f3f3;
+      }
+    </style>
+  </head>
   <body>
-
     <nav class="navbar">
-      <h1>Url Shortner</h1>
+      <h1>URL Shortener</h1>
     </nav>
 
-
-    
-    <% if(locals.id){ %>
-    <div class="copy"><h4><strong>Url generated:</strong><input style="font-weight: 200;" value=" https://url-shortner-seven-beryl.vercel.app/<%= id %> "><button>Copy</button></input></h4></div>
+    <% if (locals.id) { %>
+      <div class="copy">
+        <h4>
+          <strong>URL generated:</strong>
+          <input id="short-url" value="https://url-shortner-seven-beryl.vercel.app/<%= id %>" readonly />
+          <button id="copy-button">Copy</button>
+        </h4>
+      </div>
     <% } %>
-    <div class="form" >
-      <form  action="/url" method="post">
+
+    <div class="form">
+      <form action="/url" method="post">
         <label for="">Enter Your Original URL</label>
         <input type="text" name="url" placeholder="Enter your URL" />
         <button type="submit">Generate</button>
       </form>
-    </div>  
+    </div>
+
     <div class="table">
-      <% if(locals.urls){ %>
-        <table border="1" cellspacing="0" cellpadding="10">
+      <% if (locals.urls) { %>
+        <table>
           <thead>
             <tr>
               <th>S.no</th>
@@ -151,5 +228,27 @@
         </table>
       <% } %>
     </div>
+
+    <script>
+      // Add event listener to the copy button
+      document.getElementById('copy-button')?.addEventListener('click', function () {
+        // Get the URL input field
+        const shortUrlInput = document.getElementById('short-url');
+
+        // Select the input field text
+        shortUrlInput.select();
+        shortUrlInput.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text to the clipboard
+        navigator.clipboard
+          .writeText(shortUrlInput.value)
+          .then(() => {
+            alert('URL copied to clipboard!');
+          })
+          .catch((err) => {
+            console.error('Failed to copy URL:', err);
+          });
+      });
+    </script>
   </body>
 </html>
