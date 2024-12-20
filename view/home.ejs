@@ -230,16 +230,12 @@
     </div>
 
     <script>
-      // Add event listener to the copy button
       document.getElementById('copy-button')?.addEventListener('click', function () {
-        // Get the URL input field
         const shortUrlInput = document.getElementById('short-url');
 
-        // Select the input field text
         shortUrlInput.select();
-        shortUrlInput.setSelectionRange(0, 99999); // For mobile devices
+        shortUrlInput.setSelectionRange(0, 99999); 
 
-        // Copy the text to the clipboard
         navigator.clipboard
           .writeText(shortUrlInput.value)
           .then(() => {
